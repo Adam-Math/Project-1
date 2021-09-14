@@ -50,3 +50,12 @@ elasticsearch.hosts: ["http://localhost:9200"]
 
 sudo service kibana start
 --------------------------------------------------------------------------------
+Setting up Filebeat and Metricbeat.
+
+I wasn't able to deploy these with ansible, so I downloaded them directly onto my ELK server.
+
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.8.18-linux-x86_64.tar.gz
+tar xzvf filebeat-6.8.18-linux-x86_64.tar.gz
+
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.14.1-linux-x86_64.tar.gz
+tar xzvf metricbeat-7.14.1-linux-x86_64.tar.gz
