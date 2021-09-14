@@ -21,9 +21,13 @@ sudo apt-get update && sudo apt-get install elasticsearch
 I changed items in the elasticsearch.yml file. 
 
 Uncommenting the following:
- node.name: node-1
+
+node.name: node-1
+
 network.host: "localhost"
+
 http.port: 9200
+
 cluster.initial_master_nodes: ["node-1"]
 
 Then started elastic search
@@ -38,14 +42,18 @@ sudo service logstash start
 
 -------------------------------------------------------------------------------
 Installing Kibana
+
 sudo apt-get install kibana
 
 Then edit the config file.
 sudo nano /etc/kibana/kibana.yml
 
 The following items in the config file were changed or uncommented:
+
 server.port: 5601
+
 server.host: "0.0.0.0"
+
 elasticsearch.hosts: ["http://localhost:9200"]
 
 sudo service kibana start
@@ -61,6 +69,7 @@ curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.
 tar xzvf metricbeat-7.14.1-linux-x86_64.tar.gz
 
 Connect metricbeat to Elastic search and kibana:
+
 output.elasticsearch:
   hosts: ["myEShost:9200"]
   username: "adam_meyer"
@@ -72,5 +81,7 @@ output.elasticsearch:
 ./metricbeat setup -e
 
 sudo chown root metricbeat.yml 
+
 sudo chown root modules.d/system.yml 
+
 sudo ./metricbeat -e
