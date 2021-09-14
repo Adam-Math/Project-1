@@ -59,3 +59,18 @@ tar xzvf filebeat-6.8.18-linux-x86_64.tar.gz
 
 curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.14.1-linux-x86_64.tar.gz
 tar xzvf metricbeat-7.14.1-linux-x86_64.tar.gz
+
+Connect metricbeat to Elastic search and kibana:
+output.elasticsearch:
+  hosts: ["myEShost:9200"]
+  username: "adam_meyer"
+  password: "123@class"
+  
+  Enabling modules:
+  ./metricbeat modules list
+./metricbeat modules enable apache mysql
+./metricbeat setup -e
+
+sudo chown root metricbeat.yml 
+sudo chown root modules.d/system.yml 
+sudo ./metricbeat -e
